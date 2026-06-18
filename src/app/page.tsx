@@ -729,30 +729,6 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Decorative Navigation Arrows (Fixed) */}
-      <div className="fixed top-1/2 -translate-y-1/2 left-6 md:left-10 z-40 hidden md:flex">
-        <button aria-label="Previous slide" className="w-12 h-12 rounded-full border border-[#1a1a1a]/20 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-[#f4f0ec] transition-colors group">
-          <ChevronLeft className="w-5 h-5 text-[#1a1a1a]/60 group-hover:text-[#f4f0ec] transition-colors" strokeWidth={1} />
-        </button>
-      </div>
-      <div className="fixed top-1/2 -translate-y-1/2 right-6 md:right-10 z-40 hidden md:flex">
-        <button aria-label="Next slide" className="w-12 h-12 rounded-full border border-[#1a1a1a]/20 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-[#f4f0ec] transition-colors group">
-          <ChevronRight className="w-5 h-5 text-[#1a1a1a]/60 group-hover:text-[#f4f0ec] transition-colors" strokeWidth={1} />
-        </button>
-      </div>
-
-      {/* Social Media Links (Fixed) */}
-      <div className="fixed bottom-8 right-10 hidden md:flex space-x-6 z-40">
-        <a href="#" aria-label="Facebook" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors">
-          <FacebookIcon className="w-[18px] h-[18px]" />
-        </a>
-        <a href="#" aria-label="Instagram" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors">
-          <InstagramIcon className="w-[18px] h-[18px]" />
-        </a>
-        <a href="#" aria-label="Pinterest" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors">
-          <PinterestIcon className="w-[18px] h-[18px]" />
-        </a>
-      </div>
     </main>
   );
 }
