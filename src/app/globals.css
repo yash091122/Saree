@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  --color-background: #f4f0ec;
+  --color-foreground: #1a1a1a;
+}
+
+/* Custom styles for animations or specific components if needed */
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #1a1a1a;
+  color: #f4f0ec;
+}
