@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Saree - Premium Ethnic Wear E-Commerce
 
-## Getting Started
+A modern, high-end e-commerce platform designed for traditional Indian ethnic wear. Built with a focus on premium aesthetics, seamless animations, and real-time data syncing.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Editorial-Style UI**: A luxurious, minimalist design system inspired by high-fashion editorial magazines.
+- **Fluid Animations**: Heavy utilization of Framer Motion for parallax scrolling, page transitions, and micro-interactions.
+- **Real-Time Data**: Integrated with Supabase Realtime to instantly reflect product availability, new collections, and price updates without requiring a page refresh.
+- **Responsive Design**: Carefully crafted layouts that look stunning on both wide desktop monitors and narrow mobile screens.
+- **Glassmorphic Navigation**: A unique, floating pill-shaped navigation bar that provides quick access to core features without obstructing the viewing experience.
+- **Wishlist & Cart**: Functional cart and wishlist management seamlessly integrated into the UI.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Backend/Database**: [Supabase](https://supabase.com/) (PostgreSQL & Realtime)
+- **Icons**: [Lucide React](https://lucide.dev/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 18.x or higher
+- A Supabase account
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yash091122/Saree.git
+   cd Saree
+   ```
 
-## Deploy on Vercel
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Set up environment variables**
+   Create a `.env.local` file in the root of the project and add your Supabase credentials:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📦 Database Setup
+
+To enable real-time features, ensure you have a `products` table in your Supabase database with the following schema:
+- `id` (int8)
+- `name` (text)
+- `category` (text)
+- `price` (numeric)
+- `originalPrice` (numeric, nullable)
+- `img` (text)
+- `rating` (numeric)
+- `reviews` (int8)
+- `description` (text)
+- `longDescription` (text)
+- `badge` (text, nullable)
+- `details` (jsonb)
+
+*Don't forget to enable Realtime Broadcast for the `products` table in your Supabase dashboard.*
