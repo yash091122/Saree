@@ -33,7 +33,7 @@ function CollectionsContent() {
     const getSearchableText = (p: Product) => [p.name, p.category, p.description, p.longDescription, p.details?.origin, p.details?.weave, p.details?.fabric].filter(Boolean).join(" ").toLowerCase();
 
     // Try strict match first (ALL terms must match)
-    let exactMatches = filteredByCategory.filter(p => {
+    const exactMatches = filteredByCategory.filter(p => {
       const text = getSearchableText(p);
       return terms.every(term => text.includes(term));
     });
@@ -164,7 +164,7 @@ function CollectionsContent() {
           >
             <h2 className="text-3xl md:text-4xl font-serif text-[#1a1a1a] mb-4">No pieces found</h2>
             <p className="text-[#1a1a1a]/50 text-sm max-w-sm mx-auto mb-8 leading-relaxed">
-              We couldn't find anything matching your current search or filters. Try exploring our entire collection.
+              We couldn&apos;t find anything matching your current search or filters. Try exploring our entire collection.
             </p>
             <button
               onClick={() => {

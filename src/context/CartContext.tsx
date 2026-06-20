@@ -50,6 +50,7 @@ function FlyingImage({ item }: { item: FlyingItem }) {
     const cartBtn = document.getElementById("navbar-cart-button");
     if (cartBtn) {
       const rect = cartBtn.getBoundingClientRect();
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCartPos({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
     } else {
       setCartPos({ x: window.innerWidth / 2, y: window.innerHeight - 50 });
@@ -115,6 +116,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const savedCart = localStorage.getItem("saree_cart");
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (savedCart) setItems(JSON.parse(savedCart));
       
       const savedWishlist = localStorage.getItem("saree_wishlist");
@@ -160,6 +162,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           }
         }
 
+        // eslint-disable-next-line react-hooks/purity
         const id = Date.now().toString() + Math.random();
         setFlyingItems(prev => [...prev, { id, img: item.img, startX, startY, isReverse: true }]);
 
@@ -189,7 +192,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         }
       }
 
-      const id = Date.now().toString() + Math.random();
+      // eslint-disable-next-line react-hooks/purity
+        const id = Date.now().toString() + Math.random();
       setFlyingItems(prev => [...prev, { id, img: item.img, startX, startY, isReverse: false }]);
 
       setTimeout(() => {

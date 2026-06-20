@@ -37,7 +37,7 @@ export default function RegisterPage() {
       
       // Successfully registered
       router.push("/profile");
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || "Failed to create account. Please try again.");
     } finally {
       setLoading(false);

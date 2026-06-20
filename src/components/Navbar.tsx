@@ -26,7 +26,7 @@ export default function Navbar() {
   } = useCart();
   const { splashDone } = useSplash();
 
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<Record<string, unknown> | null>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {

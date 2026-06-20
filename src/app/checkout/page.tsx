@@ -108,7 +108,7 @@ export default function CheckoutPage() {
           </div>
           <h2 className="font-serif text-3xl mb-4">Order Confirmed!</h2>
           <p className="text-[#1a1a1a]/60 mb-8">
-            Thank you, {firstName || "Guest"}! Your gorgeous saree is on its way. We've sent a confirmation to {email || "your email"}.
+            Thank you, {firstName || "Guest"}! Your gorgeous saree is on its way. We&apos;ve sent a confirmation to {email || "your email"}.
           </p>
           <div className="w-8 h-8 border-2 border-[#1a1a1a]/20 border-t-[#1a1a1a] rounded-full animate-spin" />
           <p className="text-[10px] uppercase tracking-widest text-[#1a1a1a]/40 mt-4">Redirecting to your account...</p>

@@ -29,7 +29,7 @@ export default function LoginPage() {
       
       // Successfully logged in
       router.push("/profile");
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || "Failed to sign in. Please try again.");
     } finally {
       setLoading(false);
@@ -113,7 +113,7 @@ export default function LoginPage() {
 
         <div className="mt-8 pt-8 border-t border-[#1a1a1a]/10 flex flex-col items-center gap-4">
           <p className="text-[11px] uppercase tracking-[0.1em] font-medium text-[#1a1a1a]/60">
-            Don't have an account?
+            Don&apos;t have an account?
           </p>
           <Link href="/register" className="text-sm font-semibold text-[#1a1a1a] hover:opacity-70 transition-opacity border-b border-[#1a1a1a]">
             Create Account

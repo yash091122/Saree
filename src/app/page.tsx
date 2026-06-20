@@ -343,7 +343,7 @@ export default function Home() {
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="text-[#f4f0ec]/20 font-serif text-8xl leading-none mb-8"
             >
-              "
+              &quot;
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 40 }}

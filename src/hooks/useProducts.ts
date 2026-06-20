@@ -31,7 +31,7 @@ export function useProducts() {
           
           setProducts(normalized);
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         if (isMounted) setError(err);
       } finally {
         if (isMounted) setLoading(false);

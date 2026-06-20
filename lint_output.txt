@@ -1,0 +1,152 @@
+
+> saree@0.1.0 lint
+> eslint
+
+
+/Users/yashjain/Documents/Projects/saree/check_db.js
+   1:26  error    A `require()` style import is forbidden     @typescript-eslint/no-require-imports
+   2:1   error    A `require()` style import is forbidden     @typescript-eslint/no-require-imports
+  10:17  warning  'oData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  13:17  warning  'aData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  16:17  warning  'pData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/yashjain/Documents/Projects/saree/seed-more-products.mjs
+  89:11  warning  'data' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/yashjain/Documents/Projects/saree/src/app/checkout/page.tsx
+   15:18  warning  'count' is assigned a value but never used                       @typescript-eslint/no-unused-vars
+   15:25  warning  'closeCart' is assigned a value but never used                   @typescript-eslint/no-unused-vars
+  111:85  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/yashjain/Documents/Projects/saree/src/app/collections/page.tsx
+    4:71  warning  'Search' is defined but never used                               @typescript-eslint/no-unused-vars
+   36:9   error    'exactMatches' is never reassigned. Use 'const' instead          prefer-const
+  167:24  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/yashjain/Documents/Projects/saree/src/app/login/page.tsx
+   23:15  warning  'data' is assigned a value but never used                        @typescript-eslint/no-unused-vars
+   32:19  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  116:16  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/yashjain/Documents/Projects/saree/src/app/page.tsx
+    4:10  warning  'Search' is defined but never used                               @typescript-eslint/no-unused-vars
+    4:18  warning  'ShoppingBag' is defined but never used                          @typescript-eslint/no-unused-vars
+    4:31  warning  'ChevronLeft' is defined but never used                          @typescript-eslint/no-unused-vars
+    4:44  warning  'ChevronRight' is defined but never used                         @typescript-eslint/no-unused-vars
+    8:10  warning  'useRef' is defined but never used                               @typescript-eslint/no-unused-vars
+   12:7   warning  'FacebookIcon' is assigned a value but never used                @typescript-eslint/no-unused-vars
+   18:7   warning  'InstagramIcon' is assigned a value but never used               @typescript-eslint/no-unused-vars
+   26:7   warning  'PinterestIcon' is assigned a value but never used               @typescript-eslint/no-unused-vars
+  346:15  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/yashjain/Documents/Projects/saree/src/app/profile/page.tsx
+   19:7   warning  'mockOrders' is assigned a value but never used  @typescript-eslint/no-unused-vars
+   19:19  error    Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+   25:36  error    Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  171:43  error    Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  185:53  error    Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  309:49  error    Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  318:72  error    Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+
+/Users/yashjain/Documents/Projects/saree/src/app/register/page.tsx
+  25:15  warning  'data' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  40:19  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+
+/Users/yashjain/Documents/Projects/saree/src/components/Navbar.tsx
+   29:36  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  286:31  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  448:29  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/yashjain/Documents/Projects/saree/src/components/SplashScreen.tsx
+  293:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/yashjain/Documents/Projects/saree/src/context/CartContext.tsx
+   53:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/yashjain/Documents/Projects/saree/src/context/CartContext.tsx:53:7
+  51 |     if (cartBtn) {
+  52 |       const rect = cartBtn.getBoundingClientRect();
+> 53 |       setCartPos({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+     |       ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  54 |     } else {
+  55 |       setCartPos({ x: window.innerWidth / 2, y: window.innerHeight - 50 });
+  56 |     }                                      react-hooks/set-state-in-effect
+  118:22  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/yashjain/Documents/Projects/saree/src/context/CartContext.tsx:118:22
+  116 |     try {
+  117 |       const savedCart = localStorage.getItem("saree_cart");
+> 118 |       if (savedCart) setItems(JSON.parse(savedCart));
+      |                      ^^^^^^^^ Avoid calling setState() directly within an effect
+  119 |       
+  120 |       const savedWishlist = localStorage.getItem("saree_wishlist");
+  121 |       if (savedWishlist) setWishlist(JSON.parse(savedWishlist));  react-hooks/set-state-in-effect
+  122:14  warning  'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+  163:20  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/Users/yashjain/Documents/Projects/saree/src/context/CartContext.tsx:163:20
+  161 |         }
+  162 |
+> 163 |         const id = Date.now().toString() + Math.random();
+      |                    ^^^^^^^^^^ Cannot call impure function
+  164 |         setFlyingItems(prev => [...prev, { id, img: item.img, startX, startY, isReverse: true }]);
+  165 |
+  166 |         setTimeout(() => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/purity
+  163:44  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/Users/yashjain/Documents/Projects/saree/src/context/CartContext.tsx:163:44
+  161 |         }
+  162 |
+> 163 |         const id = Date.now().toString() + Math.random();
+      |                                            ^^^^^^^^^^^^^ Cannot call impure function
+  164 |         setFlyingItems(prev => [...prev, { id, img: item.img, startX, startY, isReverse: true }]);
+  165 |
+  166 |         setTimeout(() => {                                                                                                                                                                                                                                                                                                                                                                                                                                                     react-hooks/purity
+  192:18  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/Users/yashjain/Documents/Projects/saree/src/context/CartContext.tsx:192:18
+  190 |       }
+  191 |
+> 192 |       const id = Date.now().toString() + Math.random();
+      |                  ^^^^^^^^^^ Cannot call impure function
+  193 |       setFlyingItems(prev => [...prev, { id, img: item.img, startX, startY, isReverse: false }]);
+  194 |
+  195 |       setTimeout(() => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            react-hooks/purity
+  192:42  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/Users/yashjain/Documents/Projects/saree/src/context/CartContext.tsx:192:42
+  190 |       }
+  191 |
+> 192 |       const id = Date.now().toString() + Math.random();
+      |                                          ^^^^^^^^^^^^^ Cannot call impure function
+  193 |       setFlyingItems(prev => [...prev, { id, img: item.img, startX, startY, isReverse: false }]);
+  194 |
+  195 |       setTimeout(() => {                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/purity
+
+/Users/yashjain/Documents/Projects/saree/src/hooks/useProducts.ts
+  34:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  46:85  warning  'payload' is defined but never used       @typescript-eslint/no-unused-vars
+
+✖ 46 problems (23 errors, 23 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+

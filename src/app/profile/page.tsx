@@ -16,13 +16,13 @@ const TABS = [
   { id: "profile", label: "Profile Settings", icon: Settings },
 ];
 
-const mockOrders: any[] = [];
+const mockOrders: unknown[] = [];
 
 export default function ProfilePage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("profile");
   const { wishlist, toggleWishlist, addToCart } = useCart();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<Record<string, unknown> | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
   const [isAddingAddress, setIsAddingAddress] = useState(false);
@@ -168,7 +168,7 @@ export default function ProfilePage() {
                     </div>
                   ) : (
                     <div className="flex flex-col gap-6">
-                      {orders.map((order: any) => (
+                      {orders.map((order: Record<string, unknown>) => (
                         <div key={order.id} className="p-6 md:p-8 rounded-[2.5rem] bg-white/40 backdrop-blur-xl border border-white/60 shadow-sm flex flex-col gap-6">
                           <div className="flex justify-between items-start">
                             <div>
@@ -182,7 +182,7 @@ export default function ProfilePage() {
                           </div>
                           <div className="w-full h-[1px] bg-[#1a1a1a]/10" />
                           <div className="flex flex-wrap gap-6">
-                            {order.items.map((item: any, i: number) => (
+                            {order.items.map((item: Record<string, unknown>, i: number) => (
                               <div key={i} className="flex gap-4 items-center pr-6">
                                 <div className="w-16 h-20 rounded-[1.25rem] bg-[#e8e4e0] overflow-hidden relative border border-[#1a1a1a]/5">
                                   <Image src={item.img} alt={item.name} fill className="object-cover" />
@@ -306,7 +306,7 @@ export default function ProfilePage() {
                         </div>
                       ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          {addresses.map((addr: any) => (
+                          {addresses.map((addr: Record<string, unknown>) => (
                             <div key={addr.id} className="p-6 rounded-[2rem] bg-white/40 backdrop-blur-xl border border-white/60 shadow-sm flex flex-col gap-2 relative group">
                               <h4 className="font-serif text-xl">{addr.name}</h4>
                               <p className="text-[#1a1a1a]/60 text-sm leading-relaxed">
@@ -315,7 +315,7 @@ export default function ProfilePage() {
                               </p>
                               <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <button className="text-[10px] uppercase tracking-widest font-bold text-red-500 hover:text-red-700 transition-colors" onClick={async () => {
-                                  const updated = addresses.filter((a: any) => a.id !== addr.id);
+                                  const updated = addresses.filter((a: Record<string, unknown>) => a.id !== addr.id);
                                   const { data } = await supabase.auth.updateUser({ data: { addresses: updated } });
                                   if (data.user) setUser(data.user);
                                 }}>Remove</button>
