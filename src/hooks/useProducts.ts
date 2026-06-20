@@ -32,7 +32,7 @@ export function useProducts() {
           setProducts(normalized);
         }
       } catch (err: unknown) {
-        if (isMounted) setError(err);
+        if (isMounted) setError(err as Error);
       } finally {
         if (isMounted) setLoading(false);
       }

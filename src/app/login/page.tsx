@@ -30,7 +30,7 @@ export default function LoginPage() {
       // Successfully logged in
       router.push("/profile");
     } catch (err: unknown) {
-      setError(err.message || "Failed to sign in. Please try again.");
+      setError((err as Error).message || "Failed to sign in. Please try again.");
     } finally {
       setLoading(false);
     }

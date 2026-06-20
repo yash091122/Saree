@@ -26,7 +26,8 @@ export default function Navbar() {
   } = useCart();
   const { splashDone } = useSplash();
 
-  const [user, setUser] = useState<Record<string, unknown> | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
