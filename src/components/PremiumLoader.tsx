@@ -15,6 +15,7 @@ export default function PremiumLoader() {
           alt="Loading Background" 
           fill 
           className="object-contain opacity-10 mix-blend-multiply" 
+          sizes="(max-width: 768px) 100vw, 150px"
           priority
         />
 
@@ -35,6 +36,7 @@ export default function PremiumLoader() {
               alt="Loading Foreground" 
               fill 
               className="object-contain mix-blend-multiply" 
+              sizes="(max-width: 768px) 100vw, 150px"
               priority
             />
           </div>

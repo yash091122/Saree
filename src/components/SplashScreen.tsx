@@ -46,17 +46,25 @@ export default function SplashScreen() {
           transition={{ duration: 0.6, ease: "easeInOut" }}
           className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
           style={{
-            background: "#f4f0ec",
             pointerEvents: phase === "fly" ? "none" : "auto",
           }}
+          initial={{ backgroundColor: "rgba(244, 240, 236, 1)" }}
+          animate={{ backgroundColor: phase === "fly" ? "rgba(244, 240, 236, 0)" : "rgba(244, 240, 236, 1)" }}
         >
-          {/* ── Cinematic grain overlay ── */}
-          <div
-            className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-            }}
-          />
+          {/* Background effects that fade out when flying */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: phase === "fly" ? 0 : 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* ── Cinematic grain overlay ── */}
+            <div
+              className="absolute inset-0 opacity-[0.03] mix-blend-multiply"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+              }}
+            />
 
           {/* ── Ambient light spots ── */}
           <motion.div
@@ -71,6 +79,7 @@ export default function SplashScreen() {
             className="absolute bottom-[-15%] right-[-10%] w-[50vw] h-[50vw] rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(180,160,130,0.12) 0%, transparent 60%)" }}
           />
+          </motion.div>
 
           {/* ── Phase 1 & 2: Giant letters appear → compress → vanish ── */}
           <AnimatePresence mode="wait">
@@ -264,7 +273,7 @@ export default function SplashScreen() {
                 x: "-50%",
                 y: "-50%",
                 scale: 0.18,
-                opacity: 0,
+                opacity: 1,
               }}
               transition={{
                 duration: 0.8,

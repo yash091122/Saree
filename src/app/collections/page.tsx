@@ -68,7 +68,7 @@ function CollectionsContent() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="relative min-h-screen bg-[#f0ece8] text-[#1a1a1a]"
+          className="relative min-h-screen bg-[#f0ece8] bg-dotted text-[#1a1a1a]"
         >
 
       {/* ── Page Header ── */}
@@ -188,14 +188,24 @@ function CollectionsContent() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => router.push(`/product/${product.id}`)}
-                className="group relative cursor-pointer flex flex-col"
+                className="group relative cursor-pointer flex flex-col transform-gpu"
               >
+                {/* --- DOT GLOW EFFECT --- */}
+                <div 
+                  className="absolute -inset-[60px] -z-10 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none bg-dotted-glow"
+                  style={{
+                    maskImage: "radial-gradient(farthest-side at center, black 60%, transparent 100%)",
+                    WebkitMaskImage: "radial-gradient(farthest-side at center, black 60%, transparent 100%)"
+                  }}
+                />
+
                 {/* Image Container */}
                 <div className="relative w-full aspect-[3/4] overflow-hidden bg-[#e8e4df] rounded-2xl">
                   <Image
                     src={product.img}
                     alt={product.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
                   />
                   
@@ -220,7 +230,7 @@ function CollectionsContent() {
                       });
                     }}
                     className={`absolute top-4 right-4 w-9 h-9 flex items-center justify-center transition-all duration-500 z-10 bg-white/0 hover:bg-white/20 rounded-full ${
-                      wishlist.some(i => i.id === product.id) ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                      wishlist.some(i => i.id === product.id) ? "opacity-100" : "opacity-100 md:opacity-0 md:group-hover:opacity-100"
                     }`}
                   >
                     <Heart
@@ -232,7 +242,7 @@ function CollectionsContent() {
                   </button>
 
                   {/* Quick Add overlay button at bottom of image */}
-                  <div className="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1] z-10">
+                  <div className="absolute bottom-0 left-0 w-full p-4 translate-y-0 md:translate-y-full md:group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1] z-10">
                     <button
                       onClick={(e) => {
                         e.preventDefault();
@@ -289,7 +299,7 @@ function CollectionsContent() {
             >
               {/* Image */}
               <div className="relative w-full md:w-5/12 aspect-[3/4] md:aspect-auto">
-                <Image src={quickView.img} alt={quickView.name} fill className="object-cover object-top" />
+                <Image src={quickView.img} alt={quickView.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top" />
               </div>
 
               {/* Details */}

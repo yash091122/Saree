@@ -47,7 +47,7 @@ export default function Navbar() {
       {/* ── Floating Glassmorphic Navbar Pill ── */}
       {!hideNavbar && (
         <nav
-          className="fixed bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center gap-0.5 md:gap-1 px-2.5 md:px-2.5 py-1.5 rounded-full w-max max-w-[98vw] overflow-hidden"
+          className="fixed bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center gap-0.5 md:gap-1 px-3 md:px-4 py-2.5 rounded-full w-max max-w-[98vw] overflow-hidden"
           style={{
             background: "rgba(255,255,255,0.30)",
             backdropFilter: "blur(24px)",
@@ -60,7 +60,7 @@ export default function Navbar() {
           <Link
             id="navbar-logo-target"
             href="/"
-            className="px-2 md:px-3 py-1 rounded-full mr-0.5 md:mr-1 flex-shrink-0 flex items-center justify-center transition-all hover:opacity-80 bg-white/70 overflow-hidden"
+            className="w-[48px] h-[40px] md:w-[56px] md:h-[44px] rounded-full mr-0.5 md:mr-1 flex-shrink-0 flex items-center justify-center transition-all hover:opacity-80 bg-white/70 overflow-hidden"
             style={{
               boxShadow: "inset 0 1px 2px rgba(255,255,255,0.95), 0 2px 8px rgba(0,0,0,0.07)",
             }}
@@ -68,102 +68,117 @@ export default function Navbar() {
             <AnimatePresence>
               {splashDone && (
                 <motion.div
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
-                  <Image src="/logo.png" alt="RK Logo" width={28} height={28} className="object-contain mix-blend-multiply" />
+                  <Image src="/logo.png" alt="RK Logo" width={28} height={28} className="object-contain mix-blend-multiply" style={{ width: 'auto', height: 'auto' }} />
                 </motion.div>
               )}
             </AnimatePresence>
           </Link>
 
-          {/* Divider */}
-          <span className="hidden md:block w-[1px] h-4 bg-[#1a1a1a]/10 mx-1" />
-
-          {/* Nav Links */}
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-1.5 md:px-4 py-1 md:py-1.5 text-[9px] md:text-sm whitespace-nowrap font-medium tracking-tight md:tracking-wide rounded-full transition-all duration-200 ${
-                  isActive
-                    ? "bg-[#1a1a1a]/10 text-[#1a1a1a]"
-                    : "text-[#1a1a1a]/50 hover:text-[#1a1a1a] hover:bg-[#1a1a1a]/5"
-                }`}
+          <AnimatePresence>
+            {splashDone && (
+              <motion.div
+                initial={{ width: 0, opacity: 0, overflow: "hidden" }}
+                animate={{ 
+                  width: "auto", 
+                  opacity: 1,
+                  transitionEnd: { overflow: "visible" }
+                }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+                className="flex items-center gap-0.5 md:gap-1"
               >
-                {link.label}
-              </Link>
-            );
-          })}
+                {/* Divider */}
+                <span className="hidden md:block w-[1px] h-4 bg-[#1a1a1a]/10 mx-1" />
 
-          {/* Divider */}
-          <span className="hidden md:block w-[1px] h-4 bg-[#1a1a1a]/10 mx-1" />
+                {/* Nav Links */}
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`px-1.5 md:px-4 py-1 md:py-1.5 text-[9px] md:text-sm whitespace-nowrap font-medium tracking-tight md:tracking-wide rounded-full transition-all duration-200 ${
+                        isActive
+                          ? "bg-[#1a1a1a]/10 text-[#1a1a1a]"
+                          : "text-[#1a1a1a]/50 hover:text-[#1a1a1a] hover:bg-[#1a1a1a]/5"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
 
-          {/* Wishlist */}
-          <button
-            aria-label="Wishlist"
-            onClick={openWishlist}
-            className="relative p-1 md:p-2 flex-shrink-0 text-[#1a1a1a]/50 hover:text-[#1a1a1a] rounded-full hover:bg-[#1a1a1a]/5 transition-all"
-          >
-            <Heart className="w-4 h-4" strokeWidth={1.5} />
-            <AnimatePresence>
-              {wishlist.length > 0 && (
-                <motion.span
-                  key="wishbadge"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0 }}
-                  className="absolute -top-0.5 -right-0.5 bg-rose-400 text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
+                {/* Divider */}
+                <span className="hidden md:block w-[1px] h-4 bg-[#1a1a1a]/10 mx-1" />
+
+                {/* Wishlist */}
+                <button
+                  aria-label="Wishlist"
+                  onClick={openWishlist}
+                  className="relative p-1 md:p-2 flex-shrink-0 text-[#1a1a1a]/50 hover:text-[#1a1a1a] rounded-full hover:bg-[#1a1a1a]/5 transition-all"
                 >
-                  {wishlist.length}
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </button>
+                  <Heart className="w-4 h-4" strokeWidth={1.5} />
+                  <AnimatePresence>
+                    {wishlist.length > 0 && (
+                      <motion.span
+                        key="wishbadge"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        className="absolute -top-0.5 -right-0.5 bg-rose-400 text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
+                      >
+                        {wishlist.length}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
 
-          {/* Search */}
-          <button
-            aria-label="Search"
-            onClick={openSearch}
-            className="p-1 md:p-2 flex-shrink-0 text-[#1a1a1a]/50 hover:text-[#1a1a1a] rounded-full hover:bg-[#1a1a1a]/5 transition-all"
-          >
-            <Search className="w-4 h-4" strokeWidth={1.5} />
-          </button>
-
-          {/* Cart Button */}
-          <button
-            id="navbar-cart-button"
-            aria-label="Cart"
-            onClick={openCart}
-            className="relative p-1 md:p-2 flex-shrink-0 text-[#1a1a1a]/60 hover:text-[#1a1a1a] rounded-full hover:bg-[#1a1a1a]/5 transition-all"
-          >
-            <ShoppingBag className="w-4 h-4" strokeWidth={1.5} />
-            <AnimatePresence>
-              {count > 0 && (
-                <motion.span
-                  key="badge"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0 }}
-                  className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
+                {/* Search */}
+                <button
+                  aria-label="Search"
+                  onClick={openSearch}
+                  className="p-1 md:p-2 flex-shrink-0 text-[#1a1a1a]/50 hover:text-[#1a1a1a] rounded-full hover:bg-[#1a1a1a]/5 transition-all"
                 >
-                  {count}
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </button>
+                  <Search className="w-4 h-4" strokeWidth={1.5} />
+                </button>
 
-          {/* User Profile / Login */}
-          <Link
-            href={user ? "/profile" : "/login"}
-            aria-label="User Profile"
-            className="p-1 md:p-2 flex-shrink-0 text-[#1a1a1a]/60 hover:text-[#1a1a1a] rounded-full hover:bg-[#1a1a1a]/5 transition-all"
-          >
-            <User className="w-4 h-4" strokeWidth={1.5} />
-          </Link>
+                {/* Cart Button */}
+                <button
+                  id="navbar-cart-button"
+                  aria-label="Cart"
+                  onClick={openCart}
+                  className="relative p-1 md:p-2 flex-shrink-0 text-[#1a1a1a]/60 hover:text-[#1a1a1a] rounded-full hover:bg-[#1a1a1a]/5 transition-all"
+                >
+                  <ShoppingBag className="w-4 h-4" strokeWidth={1.5} />
+                  <AnimatePresence>
+                    {count > 0 && (
+                      <motion.span
+                        key="badge"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
+                      >
+                        {count}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
+
+                {/* User Profile / Login */}
+                <Link
+                  href={user ? "/profile" : "/login"}
+                  aria-label="User Profile"
+                  className="p-1 md:p-2 flex-shrink-0 text-[#1a1a1a]/60 hover:text-[#1a1a1a] rounded-full hover:bg-[#1a1a1a]/5 transition-all"
+                >
+                  <User className="w-4 h-4" strokeWidth={1.5} />
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
       )}
 

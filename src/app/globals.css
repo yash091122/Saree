@@ -12,6 +12,30 @@ body {
   overflow-x: hidden;
 }
 
+.bg-dotted {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.09) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+}
+
+.bg-dotted-light {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+}
+
+.bg-dotted-glow {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.3) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+}
+
+.bg-dotted-glow-light {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.4) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+}
+
 ::selection {
   background-color: #1a1a1a;
   color: #f4f0ec;

@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Search, ShoppingBag, ChevronLeft, ChevronRight, ArrowDown, Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { useCart } from "@/context/CartContext";
 import { useProducts } from "@/hooks/useProducts";
@@ -34,6 +35,7 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   const { items, addToCart, wishlist, toggleWishlist } = useCart();
   const { products } = useProducts();
+  const router = useRouter();
   
   // Parallax effects for the Hero section
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
@@ -48,7 +50,7 @@ export default function Home() {
 
 
   return (
-    <main className="relative w-full bg-[#f4f0ec] text-[#1a1a1a] overflow-hidden">
+    <main className="relative w-full bg-[#f4f0ec] bg-dotted text-[#1a1a1a] overflow-hidden">
 
 
 
@@ -109,6 +111,7 @@ export default function Home() {
               src="/saree-left.png" 
               alt="Model in modern saree" 
               fill
+              sizes="(max-width: 768px) 35vw, 25vw"
               className="object-contain object-top md:object-bottom mix-blend-multiply drop-shadow-xl"
               priority
             />
@@ -126,6 +129,7 @@ export default function Home() {
               src="/saree-right.png" 
               alt="Model in heritage silk saree" 
               fill
+              sizes="(max-width: 768px) 85vw, 50vw"
               className="object-contain object-top md:object-bottom mix-blend-multiply drop-shadow-xl"
               priority
             />
@@ -226,6 +230,7 @@ export default function Home() {
                 src="/texture.png" 
                 alt="Zari texture detail" 
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover drop-shadow-2xl"
               />
             </motion.div>
@@ -244,7 +249,7 @@ export default function Home() {
       </section>
 
       {/* --- SECTION 3: CURATED ELEGANCE (STAGGERED GRID) --- */}
-      <section className="relative w-full min-h-[150vh] py-16 md:py-32 px-8 md:px-20 z-20 bg-[#f4f0ec]">
+      <section className="relative w-full min-h-[150vh] py-16 md:py-32 px-8 md:px-20 z-20 bg-[#f4f0ec] bg-dotted">
         
         {/* Section Header */}
         <div className="w-full text-center mb-16 md:mb-32">
@@ -274,7 +279,7 @@ export default function Home() {
           {/* Column 1 */}
           <motion.div style={{ y: gridLeftY }} className="flex flex-col space-y-8 mt-0">
             <div className="w-full aspect-[3/4] relative overflow-hidden bg-[#e8e4e0]">
-              <Image src="/saree-left.png" alt="Saree Look 1" fill className="object-cover object-top mix-blend-multiply transition-transform duration-1000 hover:scale-105" />
+              <Image src="/saree-left.png" alt="Saree Look 1" fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover object-top mix-blend-multiply transition-transform duration-1000 hover:scale-105" />
             </div>
             <div className="text-center">
               <h4 className="font-serif text-lg text-[#1a1a1a]">Midnight Silk</h4>
@@ -285,7 +290,7 @@ export default function Home() {
           {/* Column 2 (Pushed down) */}
           <motion.div style={{ y: gridMidY }} className="flex flex-col space-y-8 mt-20 md:mt-40">
             <div className="w-full aspect-square md:aspect-[3/4] relative overflow-hidden bg-[#e8e4e0]">
-              <Image src="/texture.png" alt="Saree Texture" fill className="object-cover transition-transform duration-1000 hover:scale-105" />
+              <Image src="/texture.png" alt="Saree Texture" fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover transition-transform duration-1000 hover:scale-105" />
             </div>
             <div className="text-center">
               <h4 className="font-serif text-lg text-[#1a1a1a]">Zari Details</h4>
@@ -296,7 +301,7 @@ export default function Home() {
           {/* Column 3 */}
           <motion.div style={{ y: gridRightY }} className="flex flex-col space-y-8 mt-10 md:mt-20">
             <div className="w-full aspect-[3/4] relative overflow-hidden bg-[#e8e4e0]">
-              <Image src="/saree-right.png" alt="Saree Look 2" fill className="object-cover object-top mix-blend-multiply transition-transform duration-1000 hover:scale-105" />
+              <Image src="/saree-right.png" alt="Saree Look 2" fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover object-top mix-blend-multiply transition-transform duration-1000 hover:scale-105" />
             </div>
             <div className="text-center">
               <h4 className="font-serif text-lg text-[#1a1a1a]">Emerald Heritage</h4>
@@ -309,7 +314,7 @@ export default function Home() {
       </section>
 
       {/* --- SECTION 4: THE CRAFTSMANSHIP STORY (DARK EDITORIAL) --- */}
-      <section className="relative w-full bg-[#111111] text-[#f4f0ec] z-20 overflow-hidden">
+      <section className="relative w-full bg-[#111111] bg-dotted-light text-[#f4f0ec] z-20 overflow-hidden">
         
         {/* Marquee Strip */}
         <div className="w-full overflow-hidden border-y border-[#f4f0ec]/10 py-5">
@@ -399,6 +404,7 @@ export default function Home() {
                 src="/texture.png"
                 alt="Zari weaving detail"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/60 to-transparent pointer-events-none"></div>
@@ -435,7 +441,7 @@ export default function Home() {
       </section>
 
       {/* ─── SECTION 5: FEATURED COLLECTIONS ─── */}
-      <section className="relative w-full bg-[#f4f0ec] z-20 py-16 md:py-32 px-8 md:px-20 overflow-hidden">
+      <section className="relative w-full bg-[#f4f0ec] bg-dotted z-20 py-16 md:py-32 px-8 md:px-20 overflow-hidden">
 
         {/* Faint label */}
         <motion.p
@@ -467,58 +473,83 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 1, delay: index * 0.18, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -6, transition: { duration: 0.4 } }}
-              className="group relative rounded-[2.5rem] overflow-hidden aspect-[3/4] cursor-pointer"
-              style={{ boxShadow: "0 2px 0 1px rgba(255,255,255,0.25) inset, 0 24px 60px rgba(0,0,0,0.18)" }}
+              onClick={() => router.push(`/product/${item.id}`)}
+              className="group relative cursor-pointer flex flex-col transform-gpu"
             >
-              {/* Full-bleed image */}
-              <Image
-                src={item.img}
-                alt={item.name}
-                fill
-                className="object-cover object-top group-hover:scale-110 transition-transform duration-1000 ease-out"
+              {/* --- DOT GLOW EFFECT --- */}
+              <div 
+                className="absolute -inset-[60px] -z-10 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none bg-dotted-glow"
+                style={{
+                  maskImage: "radial-gradient(farthest-side at center, black 60%, transparent 100%)",
+                  WebkitMaskImage: "radial-gradient(farthest-side at center, black 60%, transparent 100%)"
+                }}
               />
-              {/* Badge */}
-              {item.badge && (
-                <motion.span
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.18 + 0.4 }}
-                  className="absolute top-5 left-5 bg-black/30 backdrop-blur-xl text-white text-[9px] uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full border border-white/20 z-10"
-                >
-                  {item.badge}
-                </motion.span>
-              )}
 
-              {/* Heart */}
-              <button 
-                onClick={() => toggleWishlist(item)}
-                className="absolute top-5 right-5 w-9 h-9 z-10 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center hover:bg-white/40 hover:scale-110 transition-all duration-300"
-              >
-                <Heart 
-                  className={`w-4 h-4 transition-colors ${
-                    wishlist.some(i => i.id === item.id) ? "fill-rose-500 text-rose-500" : "text-white"
-                  }`} 
-                  strokeWidth={wishlist.some(i => i.id === item.id) ? 0 : 1.5} 
+              {/* Image Container */}
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-[#e8e4df] rounded-[2.5rem]">
+                <Image
+                  src={item.img}
+                  alt={item.name}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
                 />
-              </button>
-
-              {/* Frosted dark glass bottom — always readable */}
-              <div className="absolute inset-x-4 bottom-4 z-10 flex items-end justify-between p-4 rounded-2xl bg-black/30 backdrop-blur-md border border-white/20 shadow-2xl overflow-hidden">
-                <div className="relative z-10">
-                  <p className="text-[10px] uppercase tracking-widest text-white/70 mb-1">{item.category}</p>
-                  <h3 className="font-serif text-lg text-white">{item.name}</h3>
-                </div>
                 
-                <div className="flex flex-col items-end gap-3 relative z-10">
-                  <p className="text-sm font-semibold text-white">₹{item.price.toLocaleString("en-IN")}</p>
-                  <button 
-                    onClick={(e) => addToCart(item, e)}
-                    className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300 group/btn"
+                {/* Elegant Minimal Badge */}
+                {item.badge && (
+                  <span className="absolute top-5 left-5 text-[#1a1a1a] text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-white/80 backdrop-blur-md rounded-full">
+                    {item.badge}
+                  </span>
+                )}
+
+                {/* Wishlist Heart */}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleWishlist(item);
+                  }}
+                  className={`absolute top-5 right-5 w-9 h-9 flex items-center justify-center transition-all duration-500 z-10 bg-white/0 hover:bg-white/20 rounded-full ${
+                    wishlist.some(i => i.id === item.id) ? "opacity-100" : "opacity-100 md:opacity-0 md:group-hover:opacity-100"
+                  }`}
+                >
+                  <Heart
+                    className={`w-5 h-5 transition-colors duration-300 ${
+                      wishlist.some(i => i.id === item.id) ? "fill-[#1a1a1a] text-[#1a1a1a]" : "text-[#1a1a1a] hover:fill-[#1a1a1a]"
+                    }`}
+                    strokeWidth={1.2}
+                  />
+                </button>
+
+                {/* Quick Add overlay button at bottom of image */}
+                <div className="absolute bottom-0 left-0 w-full p-4 translate-y-0 md:translate-y-full md:group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1] z-10">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      addToCart(item, e);
+                    }}
+                    className="w-full bg-white/95 backdrop-blur-md text-[#1a1a1a] py-3.5 rounded-xl text-[10px] uppercase tracking-[0.2em] font-bold shadow-[0_10px_20px_rgba(0,0,0,0.1)] hover:bg-white transition-colors"
                   >
-                    {items.some(i => i.id === item.id) ? "ADDED!" : "Buy Now"}
+                    {items.some(i => i.id === item.id) ? "Added to Bag" : "Quick Add"}
                   </button>
                 </div>
+              </div>
+
+              {/* Content Area - Minimalist */}
+              <div className="pt-5 flex flex-col gap-1.5 px-2">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-[#1a1a1a] font-serif text-lg tracking-wide group-hover:text-black transition-colors truncate">
+                    {item.name}
+                  </h3>
+                  <p className="text-[#1a1a1a] text-sm font-semibold">
+                    ₹{item.price.toLocaleString("en-IN")}
+                  </p>
+                </div>
+                <p className="text-[9px] font-sans font-bold tracking-[0.2em] text-[#1a1a1a]/50 uppercase">
+                  {item.category}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -540,7 +571,7 @@ export default function Home() {
       </section>
 
       {/* ─── SECTION 6: PROCESS / PHILOSOPHY STRIP ─── */}
-      <section className="relative w-full bg-[#1d1b1a] z-20 py-16 md:py-28 px-8 md:px-20 overflow-hidden">
+      <section className="relative w-full bg-[#1d1b1a] bg-dotted-light z-20 py-16 md:py-28 px-8 md:px-20 overflow-hidden">
 
         {/* Big faint word */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
@@ -584,7 +615,7 @@ export default function Home() {
 
 
       {/* ─── SECTION 8: NEWSLETTER (REDESIGNED) ─── */}
-      <section className="relative w-full bg-[#f4f0ec] z-20 overflow-hidden">
+      <section className="relative w-full bg-[#f4f0ec] bg-dotted z-20 overflow-hidden">
 
         {/* Decorative gradient blobs */}
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#d4c9be]/40 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
